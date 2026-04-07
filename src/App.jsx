@@ -10,23 +10,23 @@ import Navbar from "./components/Navbar";
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<><Navbar/>, <Home/> </>
+    element:<><Navbar/> <Home/> </>
   },
   {
     path: "/sobre",
-    element:<><Navbar/>, <About/> </>
+    element:<><Navbar/> <About/> </>
   },
   {
     path: "/blogs",
-    element:<><Navbar/>, <Blogs/> </>
+    element:<><Navbar/> <Blogs/> </>
   },
   {
     path: "/login",
-    element:<><Navbar/>, <Login/> </>
+    element:<><Navbar/> <Login/> </>
   },
   {
     path: "/logout",
-    element:<><Navbar/>, <Signup/> </>
+    element:<><Navbar/> <Signup/> </>
   },
 
 
