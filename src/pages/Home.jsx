@@ -1,13 +1,9 @@
-import React from 'react'
-import { Button } from '../components/ui/button' 
+import Hero from "../components/ui/Hero";
 
-const Home = () => {
+export default function Home() {
   return (
-    <div>
-      Home
-      <Button>Clique Aqui</Button>
+    <div className="pt-20">
+      <Hero />
     </div>
-  )
+  );
 }
-
-export default Home
