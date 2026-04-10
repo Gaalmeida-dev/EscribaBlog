@@ -3,8 +3,7 @@ node_modules/
 dist/
 build/
 
-# Variáveis de Ambiente (MUITO IMPORTANTE)
-# Nunca suba suas credenciais do banco de dados para o GitHub
+# Variáveis de Ambiente 
 .env
 .env.local
 .env.production
@@ -18,7 +17,6 @@ logs/
 *.log
 
 # Banco de Dados
-# Se usar SQLite para testes rápidos
 *.db
 *.sqlite
 
@@ -33,5 +31,5 @@ logs/
 thumbs.db
 .cache/
 
-# Docker (se estiver usando para o banco)
+# Docker 
 .docker/

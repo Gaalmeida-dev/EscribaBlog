@@ -4,6 +4,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import connectDB from "./database/db.js";
 import userRoute from "./routes/user.route.js";
+import blogRoute from "./routes/blog.route.js";
+
 
 dotenv.config();
 const app = express();
@@ -19,6 +21,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use("/api/v1/usuario", userRoute);
+app.use("/api/v1/blog", blogRoute);
+
 
 const PORT = process.env.PORT || 3000;
 
