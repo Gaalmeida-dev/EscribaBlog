@@ -20,6 +20,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { LiaCommentSolid } from "react-icons/lia";
+import userLogo from "../assets/user.svg";
 
 export const Navbar = () => {
   const { user } = useSelector((store) => store.auth);
@@ -95,8 +96,8 @@ export const Navbar = () => {
                       <Avatar>
                         <AvatarImage
                           src={
-                            user?.profilePhoto ||
-                            "https://github.com/shadcn.png"
+                            user?.photoUrl ||
+                            userLogo
                           }
                         />
                         <AvatarFallback>
