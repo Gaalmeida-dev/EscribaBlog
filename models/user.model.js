@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
-const userScehma = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
-    primeiroNome: {
+    firstName: {
       type: String,
       required: true,
     },
-    ultimoNome: {
+    lastName: {
       type: String,
       required: true,
     },
@@ -15,7 +15,7 @@ const userScehma = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    senha: {
+    password: {
       type: String,
       required: true,
     },
@@ -23,20 +23,20 @@ const userScehma = new mongoose.Schema(
       type: String,
       default: "Escreva aqui sua Bio...",
     },
-    ocupação: {
+    occupation: {
       type: String,
       default: "Escreva aqui sua ocupação...",
     },
-    fotoUrl: {
+    photoUrl: {
       type: String,
       default: "",
     },
     instagram: { type: String, default: "" },
     github: { type: String, default: "" },
     linkedin: { type: String, default: "" },
-    portfolio: { type: String, default: "" },
+    contact: { type: String, default: "" },
   },
   { timestamps: true },
 );
 
-export const User = mongoose.model("Usuário", userScehma);
+export const User = mongoose.model("User", userSchema);
