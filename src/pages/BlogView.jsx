@@ -49,7 +49,7 @@ const BlogView = () => {
     try {
       const action = isLiked ? "descurtir" : "curtir";
       const res = await axios.get(
-        `http://localhost:8000/api/v1/blog/${action}/${selectedBlog?._id}`,
+        `https://escribablog.onrender.com/api/v1/blog/${action}/${selectedBlog?._id}`,
         { withCredentials: true },
       );
       if (res.data.success) {
@@ -196,7 +196,10 @@ const BlogView = () => {
                 key={index}
                 variant="secondary"
                 className="cursor-pointer"
-                style={{ backgroundColor: "rgb(30, 255, 230)", color: "#0a0a0a" }}
+                style={{
+                  backgroundColor: "rgb(30, 255, 230)",
+                  color: "#0a0a0a",
+                }}
                 onClick={() => navigate(`/pesquisar?q=${tag}`)}
               >
                 {tag}

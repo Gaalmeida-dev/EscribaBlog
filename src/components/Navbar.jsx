@@ -33,7 +33,7 @@ export const Navbar = () => {
   const handleLogout = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/v1/usuario/sair`,
+        `https://escribablog.onrender.com/api/v1/usuario/sair`,
         { withCredentials: true },
       );
 

@@ -43,7 +43,7 @@ const CommentBox = ({ selectedBlog }) => {
     const fetchAllComments = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/api/v1/comentario/todos/${selectedBlog._id}`,
+          `https://escribablog.onrender.com/api/v1/comentario/todos/${selectedBlog._id}`,
         );
         dispatch(setComment(res.data.comments));
       } catch (error) {
@@ -57,7 +57,7 @@ const CommentBox = ({ selectedBlog }) => {
     if (!content.trim()) return;
     try {
       const res = await axios.post(
-        `http://localhost:8000/api/v1/comentario/criar/${selectedBlog._id}`,
+        `https://escribablog.onrender.com/api/v1/comentario/criar/${selectedBlog._id}`,
         { content },
         {
           headers: { "Content-Type": "application/json" },
@@ -86,7 +86,7 @@ const CommentBox = ({ selectedBlog }) => {
   const deleteCommentHandler = async (commentId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:8000/api/v1/comentario/deletar/${commentId}`,
+        `https://escribablog.onrender.com/api/v1/comentario/deletar/${commentId}`,
         { withCredentials: true },
       );
       if (res.data.success) {
@@ -105,7 +105,7 @@ const CommentBox = ({ selectedBlog }) => {
   const editCommentHandler = async (commentId) => {
     try {
       const res = await axios.put(
-        `http://localhost:8000/api/v1/comentario/editar/${commentId}`,
+        `https://escribablog.onrender.com/api/v1/comentario/editar/${commentId}`,
         { content: editedContent },
         {
           withCredentials: true,
@@ -131,7 +131,7 @@ const CommentBox = ({ selectedBlog }) => {
   const likeCommentHandler = async (commentId) => {
     try {
       const res = await axios.get(
-        `http://localhost:8000/api/v1/comentario/curtir/${commentId}`,
+        `https://escribablog.onrender.com/api/v1/comentario/curtir/${commentId}`,
         { withCredentials: true },
       );
 

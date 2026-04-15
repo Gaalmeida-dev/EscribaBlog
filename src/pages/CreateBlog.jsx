@@ -51,7 +51,7 @@ const CreateBlog = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        "http://localhost:8000/api/v1/blog/criar",
+        "https://escribablog.onrender.com/api/v1/blog/criar",
         formData,
         {
           withCredentials: true,
@@ -96,8 +96,12 @@ const CreateBlog = () => {
               <SelectContent>
                 <SelectGroup>
                   <SelectLabel>Categorias</SelectLabel>
-                  <SelectItem value="Web Development">Desenvolvimento Web</SelectItem>
-                  <SelectItem value="Digital Marketing">Marketing Digital</SelectItem>
+                  <SelectItem value="Web Development">
+                    Desenvolvimento Web
+                  </SelectItem>
+                  <SelectItem value="Digital Marketing">
+                    Marketing Digital
+                  </SelectItem>
                   <SelectItem value="Blogging">Blogging</SelectItem>
                   <SelectItem value="Tech">Tech</SelectItem>
                   <SelectItem value="Study">Estudos</SelectItem>

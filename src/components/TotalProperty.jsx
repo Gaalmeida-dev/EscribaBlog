@@ -14,7 +14,7 @@ const TotalProperty = () => {
   const getOwnBlogs = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8000/api/v1/blog/meus-blogs`,
+        `https://escribablog.onrender.com/api/v1/blog/meus-blogs`,
         { withCredentials: true },
       );
       if (res.data.success) {
@@ -28,7 +28,7 @@ const TotalProperty = () => {
   const getTotalComments = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8000/api/v1/comentario/meus-blogs/comentarios`,
+        `https://escribablog.onrender.com/api/v1/comentario/meus-blogs/comentarios`,
         { withCredentials: true },
       );
       if (res.data.success) {
@@ -42,7 +42,7 @@ const TotalProperty = () => {
   const getTotalLikes = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8000/api/v1/blog/meus-blogs/curtidas`,
+        `https://escribablog.onrender.com/api/v1/blog/meus-blogs/curtidas`,
         { withCredentials: true },
       );
       if (res.data.success) {

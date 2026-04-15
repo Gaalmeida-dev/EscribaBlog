@@ -77,7 +77,7 @@ const Profile = () => {
     try {
       dispatch(setLoading(true));
       const res = await axios.put(
-        `http://localhost:8000/api/v1/usuario/perfil/atualizar`,
+        `https://escribablog.onrender.com/api/v1/usuario/perfil/atualizar`,
         formData,
         {
           headers: {
@@ -259,7 +259,7 @@ const Profile = () => {
                       <Input
                         id="contact"
                         name="contact"
-                        placeholder="Ex: https://meusite.com ou 11999999999"
+                        placeholder="Ex: [https://meusite.com](https://meusite.com) ou 11999999999"
                         className="text-gray-500"
                         type="text"
                         value={input.contact}
