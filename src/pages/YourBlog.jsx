@@ -32,7 +32,7 @@ const YourBlog = () => {
   const getOwnBlogs = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8000/api/v1/blog/meus-blogs`,
+        `https://escribablog.onrender.com/api/v1/blog/meus-blogs`,
         { withCredentials: true },
       );
       if (res.data.success) {
@@ -46,7 +46,7 @@ const YourBlog = () => {
   const deleteBlogHandler = async (id) => {
     try {
       const res = await axios.delete(
-        `http://localhost:8000/api/v1/blog/deletar/${id}`,
+        `https://escribablog.onrender.com/api/v1/blog/deletar/${id}`,
         { withCredentials: true },
       );
       if (res.data.success) {
@@ -63,7 +63,7 @@ const YourBlog = () => {
   const togglePublishHandler = async (id) => {
     try {
       const res = await axios.patch(
-        `http://localhost:8000/api/v1/blog/publicar/${id}`,
+        `https://escribablog.onrender.com/api/v1/blog/publicar/${id}`,
         {},
         { withCredentials: true },
       );

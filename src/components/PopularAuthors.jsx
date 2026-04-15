@@ -23,7 +23,7 @@ const PopularAuthors = () => {
   const fetchPopularAuthors = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8000/api/v1/usuario/todos-usuarios`,
+        `https://escribablog.onrender.com/api/v1/usuario/todos-usuarios`,
       );
       if (res.data.success) {
         setPopularAuthors(res.data.users);

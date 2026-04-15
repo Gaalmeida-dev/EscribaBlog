@@ -36,7 +36,7 @@ const SearchList = () => {
     const fetchData = async () => {
       try {
         const usersRes = await axios.get(
-          `http://localhost:8000/api/v1/usuario/todos-usuarios`,
+          `https://escribablog.onrender.com/api/v1/usuario/todos-usuarios`,
           { withCredentials: true },
         );
         if (usersRes.data.success) {
@@ -49,7 +49,7 @@ const SearchList = () => {
       if (!loggedUser) return;
       try {
         const meRes = await axios.get(
-          `http://localhost:8000/api/v1/usuario/${loggedUser._id}`,
+          `https://escribablog.onrender.com/api/v1/usuario/${loggedUser._id}`,
           { withCredentials: true },
         );
         if (meRes.data.success) {
@@ -99,7 +99,7 @@ const SearchList = () => {
     try {
       const action = isAlreadyFollowing ? "deixar-seguir" : "seguir";
       const res = await axios.post(
-        `http://localhost:8000/api/v1/usuario/${action}/${authorId}`,
+        `https://escribablog.onrender.com/api/v1/usuario/${action}/${authorId}`,
         {},
         { withCredentials: true },
       );

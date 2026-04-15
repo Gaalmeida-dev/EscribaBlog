@@ -24,7 +24,7 @@ const PublicProfile = () => {
     const fetchUser = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/api/v1/usuario/${userId}`,
+          `https://escribablog.onrender.com/api/v1/usuario/${userId}`,
           { withCredentials: true },
         );
         if (res.data.success) {
@@ -55,7 +55,7 @@ const PublicProfile = () => {
     try {
       const action = isFollowing ? "deixar-seguir" : "seguir";
       const res = await axios.post(
-        `http://localhost:8000/api/v1/usuario/${action}/${userId}`,
+        `https://escribablog.onrender.com/api/v1/usuario/${action}/${userId}`,
         {},
         { withCredentials: true },
       );

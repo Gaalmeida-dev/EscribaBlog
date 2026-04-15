@@ -77,7 +77,7 @@ const UpdateBlog = () => {
     try {
       setLoading(true);
       const res = await axios.put(
-        `http://localhost:8000/api/v1/blog/atualizar/${id}`,
+        `https://escribablog.onrender.com/api/v1/blog/atualizar/${id}`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -98,7 +98,7 @@ const UpdateBlog = () => {
   const togglePublishStatus = async () => {
     try {
       const res = await axios.patch(
-        `http://localhost:8000/api/v1/blog/publicar/${id}`,
+        `https://escribablog.onrender.com/api/v1/blog/publicar/${id}`,
         {},
         { withCredentials: true },
       );
@@ -118,7 +118,7 @@ const UpdateBlog = () => {
   const deleteBlogHandler = async () => {
     try {
       const res = await axios.delete(
-        `http://localhost:8000/api/v1/blog/deletar/${id}`,
+        `https://escribablog.onrender.com/api/v1/blog/deletar/${id}`,
         { withCredentials: true },
       );
       if (res.data.success) {
