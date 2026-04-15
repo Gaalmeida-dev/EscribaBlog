@@ -92,7 +92,8 @@ export const login = async (req, res) => {
       .cookie("token", token, {
         maxAge: 1 * 24 * 60 * 60 * 1000,
         httpOnly: true,
-        sameSite: "strict",
+        sameSite: "none",
+        secure: true,
       })
       .json({
         success: true,
@@ -110,10 +111,18 @@ export const login = async (req, res) => {
 
 export const logout = async (_, res) => {
   try {
-    return res.status(200).cookie("token", "", { maxAge: 0 }).json({
-      message: "Sessão encerrada com sucesso.",
-      success: true,
-    });
+    return res
+      .status(200)
+      .cookie("token", "", {
+        maxAge: 0,
+        httpOnly: true,
+        sameSite: "none",
+        secure: true,
+      })
+      .json({
+        message: "Sessão encerrada com sucesso.",
+        success: true,
+      });
   } catch (error) {
     console.log(error);
   }
