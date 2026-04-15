@@ -17,7 +17,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin: "https://escribablog.onrender.com",
+  origin: "https://escriba-blog.vercel.app",
   credentials: true,
 };
 app.use(cors(corsOptions));
