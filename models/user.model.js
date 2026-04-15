@@ -21,20 +21,25 @@ const userSchema = new mongoose.Schema(
     },
     bio: {
       type: String,
-      default: "Escreva aqui sua Bio...",
+      default: "",
     },
     occupation: {
       type: String,
-      default: "Escreva aqui sua ocupação...",
     },
     photoUrl: {
       type: String,
       default: "",
     },
+    contact: {
+      type: String,
+      default: "",
+    },
     instagram: { type: String, default: "" },
-    github: { type: String, default: "" },
     linkedin: { type: String, default: "" },
-    contact: { type: String, default: "" },
+    github: { type: String, default: "" },
+    facebook: { type: String, default: "" },
+    followers: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    following: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
   },
   { timestamps: true },
 );
