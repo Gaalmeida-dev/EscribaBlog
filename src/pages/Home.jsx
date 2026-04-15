@@ -1,9 +1,16 @@
-import Hero from "../components/ui/Hero";
+import Hero from "../components/Hero";
+import React from "react";
+import RecentBlog from "@/components/RecentBlog";
+import PopularAuthors from "@/components/PopularAuthors";
 
-export default function Home() {
+const Home = () => {
   return (
     <div className="pt-20">
       <Hero />
+      <RecentBlog />
+      <PopularAuthors />
     </div>
   );
-}
+};
+
+export default Home;

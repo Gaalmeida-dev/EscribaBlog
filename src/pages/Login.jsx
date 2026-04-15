@@ -38,7 +38,7 @@ const Login = () => {
     try {
       dispatch(setLoading(true));
       const res = await axios.post(
-        `http://localhost:8000/api/v1/usuario/logar`,
+        `http://localhost:8000/api/v1/usuario/login`,
         input,
         {
           headers: {

@@ -126,4 +126,8 @@
   html {
     @apply font-sans;
   }
+
+  .jodit-wysiwyg {
+  color: #111111 !important;
+}
 }

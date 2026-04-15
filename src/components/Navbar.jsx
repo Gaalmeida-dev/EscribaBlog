@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import logoImg from "@/assets/pen-nib-svgrepo-com.svg";
+import logoImage from "@/assets/pen-nib-svgrepo-com.svg";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { BookMarkedIcon, LogOut, PenTool, Search, User } from "lucide-react";
@@ -21,29 +21,43 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { LiaCommentSolid } from "react-icons/lia";
 import userLogo from "../assets/user.svg";
+import { useState } from "react";
 
 export const Navbar = () => {
   const { user } = useSelector((store) => store.auth);
   const { theme } = useSelector((store) => store.theme);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const logoutHandler = async () => {
+  const handleLogout = async () => {
     try {
-      const res = await axios.get(
-        `http://localhost:8000/api/v1/usuario/logout`,
+      const response = await axios.get(
+        `http://localhost:8000/api/v1/usuario/sair`,
         { withCredentials: true },
       );
 
-      if (res.data.success) {
+      if (response.data.success) {
         dispatch(setUser(null));
-        toast.success(res.data.message);
+        toast.success(response.data.message || "Sessão encerrada");
         navigate("/login");
       }
     } catch (error) {
       console.log(error);
-      const errorMsg = error.response?.data?.message || "Erro ao sair";
-      toast.error(errorMsg);
+      const errorMessage = error.response?.data?.message || "Erro ao sair";
+      toast.error(errorMessage);
+    }
+  };
+
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      navigate(`/pesquisar?q=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
+
+  const handleSearchKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
     }
   };
 
@@ -54,7 +68,7 @@ export const Navbar = () => {
           <Link to="/">
             <div className="flex gap-2 items-center">
               <img
-                src={logoImg}
+                src={logoImage}
                 alt="Logo"
                 className="w-7 h-7 md:w-10 md:h-10"
               />
@@ -65,22 +79,25 @@ export const Navbar = () => {
             <Input
               type="text"
               placeholder="Pesquisar..."
-              className="border border-gray-700 dark:bg-gray-900 bg-gray-300 w-300px hidden md:block"
+              className="border border-gray-700 dark:bg-gray-900 bg-gray-300 w-[300px] hidden md:block"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={handleSearchKeyDown}
             />
-            <Button className="absolute right-0 top-0">
+            <Button className="absolute right-0 top-0" onClick={handleSearch}>
               <Search />
             </Button>
           </div>
         </div>
         <nav className="flex md:gap-7 gap-4 items-center">
           <ul className="hidden md:flex gap-7 items-center text-xl font-semibold">
-            <Link to={"/"}>
-              <li>Menu</li>
+            <Link to="/">
+              <li>Início</li>
             </Link>
-            <Link to={"/about"}>
+            <Link to="/sobre">
               <li>Sobre</li>
             </Link>
-            <Link to={"/blogs"}>
+            <Link to="/blogs">
               <li>Blogs</li>
             </Link>
           </ul>
@@ -96,7 +113,7 @@ export const Navbar = () => {
                       <Avatar>
                         <AvatarImage src={user?.photoUrl || userLogo} />
                         <AvatarFallback>
-                          {user?.primeiroNome?.charAt(0) || "U"}
+                          {user?.firstName?.charAt(0) || "U"}
                         </AvatarFallback>
                       </Avatar>
                     </button>
@@ -110,28 +127,28 @@ export const Navbar = () => {
                     <DropdownMenuSeparator />
                     <DropdownMenuGroup>
                       <DropdownMenuItem
-                        onClick={() => navigate("/dashboard/perfil")}
+                        onClick={() => navigate("/painel/perfil")}
                         className="flex items-center gap-2"
                       >
                         <User size={18} />
                         <span>Perfil</span>
                       </DropdownMenuItem>
                       <DropdownMenuItem
-                        onClick={() => navigate("/dashboard/seu-blog")}
+                        onClick={() => navigate("/painel/meus-blogs")}
                         className="flex items-center gap-2"
                       >
                         <BookMarkedIcon size={18} />
-                        <span>Seus Blogs</span>
+                        <span>Meus Blogs</span>
                       </DropdownMenuItem>
                       <DropdownMenuItem
-                        onClick={() => navigate("/dashboard/comentarios")}
+                        onClick={() => navigate("/painel/comentarios")}
                         className="flex items-center gap-2"
                       >
                         <LiaCommentSolid size={18} />
                         <span>Comentários</span>
                       </DropdownMenuItem>
                       <DropdownMenuItem
-                        onClick={() => navigate("/dashboard/escreva-blog")}
+                        onClick={() => navigate("/painel/escrever-blog")}
                         className="flex items-center gap-2"
                       >
                         <PenTool size={18} />
@@ -140,7 +157,7 @@ export const Navbar = () => {
                     </DropdownMenuGroup>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem
-                      onClick={logoutHandler}
+                      onClick={handleLogout}
                       className="text-destructive focus:text-destructive flex items-center gap-2"
                     >
                       <LogOut size={18} />
@@ -151,10 +168,10 @@ export const Navbar = () => {
               </div>
             ) : (
               <div className="ml-7 md:flex gap-2">
-                <Link to={"/login"}>
+                <Link to="/login">
                   <Button>Login</Button>
                 </Link>
-                <Link className="hidden md:block" to={"/cadastro"}>
+                <Link className="hidden md:block" to="/cadastro">
                   <Button>Cadastrar</Button>
                 </Link>
               </div>

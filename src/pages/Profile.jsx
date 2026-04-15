@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Card } from "../components/ui/card";
 import { Avatar, AvatarImage } from "../components/ui/avatar";
 import userLogo from "../assets/user.svg";
-import { Link } from "react-router-dom";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { Label } from "../components/ui/label";
 import { Button } from "../components/ui/button";
@@ -116,18 +115,34 @@ const Profile = () => {
               {user?.occupation || "Ocupação"}
             </h1>
             <div className="flex gap-4 items-center">
-              <Link to={user?.github || "#"} target="_blank">
+              <a
+                href={user?.github || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaGithub className="w-6 h-6 text-gray-800 dark:text-gray-300" />
-              </Link>
-              <Link to={user?.instagram || "#"} target="_blank">
+              </a>
+              <a
+                href={user?.instagram || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaInstagram className="w-6 h-6 text-gray-800 dark:text-gray-300" />
-              </Link>
-              <Link to={user?.linkedin || "#"} target="_blank">
+              </a>
+              <a
+                href={user?.linkedin || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaLinkedin className="w-6 h-6 text-gray-800 dark:text-gray-300" />
-              </Link>
-              <Link to={getContactLink(user?.contact)} target="_blank">
+              </a>
+              <a
+                href={getContactLink(user?.contact)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <IoMdContacts className="w-6 h-6 text-gray-800 dark:text-gray-300" />
-              </Link>
+              </a>
             </div>
           </div>
           <div className="flex-1">

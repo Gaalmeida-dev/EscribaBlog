@@ -8,7 +8,7 @@ const Sidebar = () => {
     <div className="hidden fixed top-[60px] left-0 md:block border-r-2 dark:bg-gray-800 bg-white border-gray-300 dark:border-gray-600 w-[260px] p-6 space-y-2 h-[calc(100vh-60px)] z-10">
       <div className="pt-6 px-1 space-y-2">
         <NavLink
-          to="/dashboard/perfil"
+          to="/painel/perfil"
           className={({ isActive }) =>
             `text-lg ${isActive ? "bg-gray-800 dark:bg-gray-900 text-gray-200" : "text-gray-900 dark:text-gray-100 bg-transparent"} flex items-center gap-3 font-bold cursor-pointer p-2.5 rounded-xl w-full`
           }
@@ -18,7 +18,7 @@ const Sidebar = () => {
         </NavLink>
 
         <NavLink
-          to="/dashboard/seu-blog"
+          to="/painel/meus-blogs"
           className={({ isActive }) =>
             `text-lg ${isActive ? "bg-gray-800 dark:bg-gray-900 text-gray-200" : "text-gray-900 dark:text-gray-100 bg-transparent"} flex items-center gap-3 font-bold cursor-pointer p-2.5 rounded-xl w-full`
           }
@@ -28,7 +28,7 @@ const Sidebar = () => {
         </NavLink>
 
         <NavLink
-          to="/dashboard/comentarios"
+          to="/painel/comentarios"
           className={({ isActive }) =>
             `text-lg ${isActive ? "bg-gray-800 dark:bg-gray-900 text-gray-200" : "text-gray-900 dark:text-gray-100 bg-transparent"} flex items-center gap-3 font-bold cursor-pointer p-2.5 rounded-xl w-full`
           }
@@ -38,7 +38,7 @@ const Sidebar = () => {
         </NavLink>
 
         <NavLink
-          to="/dashboard/escreva-blog"
+          to="/painel/escrever-blog"
           className={({ isActive }) =>
             `text-lg ${isActive ? "bg-gray-800 dark:bg-gray-900 text-gray-200" : "text-gray-900 dark:text-gray-100 bg-transparent"} flex items-center gap-3 font-bold cursor-pointer p-2.5 rounded-xl w-full`
           }

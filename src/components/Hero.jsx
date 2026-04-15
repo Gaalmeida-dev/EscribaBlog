@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "./button";
+import { Button } from "./ui/button";
 
 const Hero = () => {
-  const heroImg = "/Remote-Team--Streamline-Manchester.png";
+  const heroImage = "/Remote-Team--Streamline-Manchester.png";
 
   return (
     <div className="px-4 md:px-0">
@@ -13,7 +13,6 @@ const Hero = () => {
             Explore novidades Tecnológicas
           </h1>
           <p className="text-lg md:text-xl opacity-80 mb-6">
-            {" "}
             Aqui você se mantém por dentro de artigos, tutoriais e soluções
             digitais.
           </p>
@@ -21,7 +20,7 @@ const Hero = () => {
             <Link to="/cadastro">
               <Button className="text-lg">Faça parte</Button>
             </Link>
-            <Link to="/about">
+            <Link to="/sobre">
               <Button
                 variant="outline"
                 className="px-6 py-3 text-lg border-gray-300"
@@ -33,7 +32,7 @@ const Hero = () => {
         </div>
         <div className="flex items-center justify-center w-full md:w-1/2">
           <img
-            src={heroImg}
+            src={heroImage}
             alt="Ilustração criativa"
             className="w-full max-w-[400px] md:max-w-[550px] h-auto object-contain"
           />

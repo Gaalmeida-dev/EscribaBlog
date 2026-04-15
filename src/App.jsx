@@ -1,79 +1,111 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Sidebar from "./components/Sidebar";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Blogs from "./pages/Blogs";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import { Navbar } from "@/components/Navbar";
 import Profile from "./pages/Profile";
+import Blogs from "./pages/Blog.jsx";
+import CreateBlog from "./pages/CreateBlog";
 import Dashboard from "./pages/Dashboard";
 import YourBlog from "./pages/YourBlog";
+import BlogView from "./pages/BlogView";
+import About from "./pages/About";
 import Comments from "./pages/Comments";
-import CreateBlog from "./pages/CreateBlog";
+import UpdateBlog from "./pages/UpdateBlog";
+import ProtectedRoute from "./components/ProtectedRoute";
+import SearchList from "./pages/SearchList";
+import PublicProfile from "./pages/PublicProfile";
+
+const MainLayout = () => {
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </>
+  );
+};
+
+const DashboardLayout = () => {
+  return (
+    <>
+      <Navbar />
+      <Sidebar />
+      <ProtectedRoute>
+        <Outlet />
+      </ProtectedRoute>
+    </>
+  );
+};
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <>
-        <Navbar />
-        <Home />
-      </>
-    ),
-  },
-  {
-    path: "/sobre",
-    element: (
-      <>
-        <Navbar />
-        <About />
-      </>
-    ),
-  },
-  {
-    path: "/blogs",
-    element: (
-      <>
-        <Navbar />
-        <Blogs />
-      </>
-    ),
-  },
-  {
-    path: "/login",
-    element: (
-      <>
-        <Navbar />
-        <Login />
-      </>
-    ),
-  },
-  {
-    path: "/cadastro",
-    element: (
-      <>
-        <Navbar />
-        <Signup />
-      </>
-    ),
-  },
-  {
-    path: "/dashboard",
-    element: (
-      <>
-        <Navbar />
-
-        <Dashboard />
-      </>
-    ),
+    element: <MainLayout />,
     children: [
       {
-        path: "perfil",
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs />,
+      },
+      {
+        path: "/sobre",
+        element: <About />,
+      },
+      {
+        path: "/pesquisar",
+        element: <SearchList />,
+      },
+      {
+        path: "/blogs/:blogId",
+        element: (
+          <ProtectedRoute>
+            <BlogView />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/perfil",
         element: <Profile />,
       },
       {
-        path: "seu-blog",
+        path: "/perfil/:userId",
+        element: <PublicProfile />,
+      },
+      {
+        path: "/cadastro",
+        element: <Signup />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+    ],
+  },
+  {
+    path: "/painel",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "",
+        element: <Dashboard />,
+      },
+      {
+        path: "escrever-blog",
+        element: <CreateBlog />,
+      },
+      {
+        path: "escrever-blog/:blogId",
+        element: <UpdateBlog />,
+      },
+      {
+        path: "meus-blogs",
         element: <YourBlog />,
       },
       {
@@ -81,8 +113,8 @@ const router = createBrowserRouter([
         element: <Comments />,
       },
       {
-        path: "escreva-blog",
-        element: <CreateBlog />,
+        path: "perfil",
+        element: <Profile />,
       },
     ],
   },
